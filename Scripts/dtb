@@ -1,0 +1,16 @@
+#!/bin/sh
+# Tiny CLI for DynamicTouchBar's URL scheme.
+#   dtb notify "Title" ["Body"] [sf.symbol]
+#   dtb progress <id> <0-100|done|failed|cancel> ["Title"]
+#   dtb timer <minutes> ["Label"]   |   dtb show | hide | toggle
+enc() { python3 -c 'import sys,urllib.parse;print(urllib.parse.quote(sys.argv[1]))' "$1"; }
+case "$1" in
+  notify)   open -g "dynamictouchbar://notify?title=$(enc "$2")&body=$(enc "${3:-}")&symbol=$(enc "${4:-}")" ;;
+  progress) case "$3" in
+              done|failed|cancel) open -g "dynamictouchbar://progress?id=$(enc "$2")&state=$3" ;;
+              *) open -g "dynamictouchbar://progress?id=$(enc "$2")&value=$3&title=$(enc "${4:-}")" ;;
+            esac ;;
+  timer)    open -g "dynamictouchbar://timer?minutes=$2&label=$(enc "${3:-Timer}")" ;;
+  show|hide|toggle) open -g "dynamictouchbar://$1" ;;
+  *) sed -n '2,5p' "$0"; exit 1 ;;
+esac

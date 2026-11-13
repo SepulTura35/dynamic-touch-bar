@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.dynamictouchbar.app.url</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>dynamictouchbar</string>
+			</array>
+		</dict>
+	</array>
+	<key>NSAppleEventsUsageDescription</key>
+	<string>DynamicTouchBar talks to Music, Spotify, Xcode, Safari and Finder only when you use their Touch Bar controls or to show what is playing. Nothing leaves your Mac.</string>
+	<key>NSDownloadsFolderUsageDescription</key>
+	<string>DynamicTouchBar can show in-progress downloads in the Touch Bar. It only looks at file names and sizes in your Downloads folder, and only when you turn this on.</string>
+</dict>
+</plist>
